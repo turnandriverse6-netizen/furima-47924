@@ -4,6 +4,13 @@ usersテーブル
 | nickname           | string | null: false               |
 | email              | string | null: false, unique: true |
 | encrypted_password | string | null: false               |
+| family_name_kanji  | string | null: false               |
+| first_name_kanji   | string | null: false               |
+| family_name_kana   | string | null: false               |
+| first_name_kana    | string | null: false               |
+| birth_year         | integer| null: false               |
+| birth_month        | integer| null: false               |
+| birth_day          | integer| null: false               |
 
 has_many :items
 has_many :orders
@@ -15,6 +22,11 @@ items テーブル
 | description | text       | null: false                    |
 | price       | integer    | null: false                    |
 | user        | references | null: false, foreign_key: true |
+| category    | integer    | null: false                    |
+| condition   | integer    | null: false                    |
+| shipping_fee| string     | null: false                    |
+|prefecture_id| integer    | null: false                    |
+|shipping_days| string     | null: false                    |
 
 belongs_to :user
 has_one :order
