@@ -8,7 +8,7 @@ usersテーブル
 | first_name_        | string | null: false               |
 | family_name_kana   | string | null: false               |
 | first_name_kana    | string | null: false               |
-| birth_date         | integer| null: false               |
+| birth_date         | date   | null: false               |
 
 has_many :items
 has_many :orders
