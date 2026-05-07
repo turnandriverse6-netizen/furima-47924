@@ -64,6 +64,27 @@ RSpec.describe User, type: :model do
           expect(@user.errors.full_messages).to include('Password must contain at least one number and one uppercase and lowercase character')  
       end
 
+      it 'passwordが半角英字のみでは登録できない' do
+          @user.password = 'password'
+          @user.password_confirmation = 'password'
+          @user.valid?
+          expect(@user.errors.full_messages).to include('Password must contain at least one number and one uppercase and lowercase character')  
+      end
+
+      it 'passwordが半角数字のみでは登録できない' do
+          @user.password = '123456'
+          @user.password_confirmation = '123456'
+          @user.valid?
+          expect(@user.errors.full_messages).to include('Password must contain at least one number and one uppercase and lowercase character')  
+      end
+
+      it 'passwordが全角では登録できない' do
+          @user.password = 'Ｐａｓｓｗｏｒｄ１'
+          @user.password_confirmation = 'Ｐａｓｓｗｏｒｄ１'
+          @user.valid?
+          expect(@user.errors.full_messages).to include('Password must contain at least one number and one uppercase and lowercase character')  
+      end
+
       it 'passwordとpassword_confirmationが一致しないと登録できない' do
           @user.password = 'Password1'
           @user.password_confirmation = 'Password2'
