@@ -1,11 +1,33 @@
 class Item < ApplicationRecord
+extend ActiveHash::Associations::ActiveRecordExtensions
+
   has_one_attached :image
   belongs_to :user
   has_one :order
+  belongs_to :category
 
-  private
+  belongs_to :condition
+  belongs_to :shipping_fee
+  belongs_to :shipping_day
+  belongs_to :prefecture
 
-  def item_params
-    params.require(:item).permit(:name, :description, :price, :category_id, :condition_id, :shipping_fee_id, :shipping_day_id, :prefecture_id, :image).merge(user_id: current_user.id)
-  end
+  validates :name, presence: true
+  validates :description, presence: true
+  validates :price, presence: true, 
+    numericality: {
+    only_integer: true, 
+    greater_than_or_equal_to: 300, 
+    less_than_or_equal_to: 9999999 
+    },
+    format: {
+    with: /\A[0-9]+\z/,
+  }
+  validates :user, presence: true
+  validates :category_id, presence: true, numericality: { other_than: 1 }
+  validates :condition_id, presence: true, numericality: { other_than: 1 }
+  validates :shipping_fee_id, presence: true, numericality: { other_than: 1 }
+  validates :shipping_day_id, presence: true, numericality: { other_than: 1 }
+  validates :prefecture_id, presence: true, numericality: { other_than: 1 }
+  validates :image, presence: true
+  
 end
