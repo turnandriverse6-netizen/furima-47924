@@ -62,5 +62,8 @@ RSpec.describe Item, type: :model do
       end
 
       it 'shipping_fee_idが1では登録できない' do
-        @item.shipping_fee_id =
+        @item.shipping_fee_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Shipping fee must be other than 1')
+      end
 end
