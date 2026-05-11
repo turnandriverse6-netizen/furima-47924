@@ -66,7 +66,36 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include('Shipping fee must be other than 1')
       end
+      it 'shipping_day_idが1では登録できない' do
+        @item.shipping_day_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Shipping day must be other than 1')
+      end
+
+      it 'prefecture_idが1では登録できない' do
+        @item.prefecture_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Prefecture must be other than 1')
+      end 
+
+      it 'userが紐付いていないと登録できない' do
+        @item.user = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include('User must exist')
+      end
+
+      it 'priceが全角数字では登録できない' do
+        @item.price = '１０００'
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Price is not a number')
+      end
+
+      it 'priceが英字では登録できない' do
+        @item.price = 'aaaa'
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Price is not a number')
+      end
     end
-end
+  end
 end
 
