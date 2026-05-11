@@ -66,4 +66,5 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include('Shipping fee must be other than 1')
       end
+    end
 end
