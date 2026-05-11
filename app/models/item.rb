@@ -1,8 +1,8 @@
 class Item < ApplicationRecord
 extend ActiveHash::Associations::ActiveRecordExtensions
 
-  #has_one_attached :image
-  #belongs_to :user
+  has_one_attached :image
+  belongs_to :user
   #has_one :order
   belongs_to :category
 
@@ -18,7 +18,7 @@ extend ActiveHash::Associations::ActiveRecordExtensions
     only_integer: true, 
     greater_than_or_equal_to: 300, 
     less_than_or_equal_to: 9999999 
-    },
+    }
   validates :category_id, presence: true, numericality: { other_than: 1 }
   validates :condition_id, presence: true, numericality: { other_than: 1 }
   validates :shipping_fee_id, presence: true, numericality: { other_than: 1 }

@@ -3,6 +3,8 @@ function priceCalculator() {
   const addTaxPrice = document.getElementById("add-tax-price");
   const profit = document.getElementById("profit");
 
+   if (!priceInput) return null;
+
   priceInput.addEventListener("input", () => {
     const price = priceInput.value;
 
@@ -15,3 +17,4 @@ function priceCalculator() {
 }
 
 window.addEventListener("turbo:load", priceCalculator);
+window.addEventListener("turbo:render", priceCalculator);
