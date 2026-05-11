@@ -1,9 +1,9 @@
 class Item < ApplicationRecord
 extend ActiveHash::Associations::ActiveRecordExtensions
 
-  has_one_attached :image
-  belongs_to :user
-  has_one :order
+  #has_one_attached :image
+  #belongs_to :user
+  #has_one :order
   belongs_to :category
 
   belongs_to :condition
@@ -19,10 +19,6 @@ extend ActiveHash::Associations::ActiveRecordExtensions
     greater_than_or_equal_to: 300, 
     less_than_or_equal_to: 9999999 
     },
-    format: {
-    with: /\A[0-9]+\z/,
-  }
-  validates :user, presence: true
   validates :category_id, presence: true, numericality: { other_than: 1 }
   validates :condition_id, presence: true, numericality: { other_than: 1 }
   validates :shipping_fee_id, presence: true, numericality: { other_than: 1 }
