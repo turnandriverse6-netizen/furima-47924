@@ -83,7 +83,7 @@
   </div>
   <%# /画面中央の「会員数日本一位」帯部分 %>
 
-  <%# FURIMAの特徴 %>
+  
   <div class='feature-contents'>
     <h2 class='title'>
       FURIMAの特徴
@@ -118,9 +118,9 @@
       </li>
     </ul>
   </div>
-  <%# /FURIMAの特徴 %>
+  
 
-  <%# 商品一覧 %>
+  
   <div class='item-contents'>
     <h2 class='title'>ピックアップカテゴリー</h2>
     <div class="subtitle" >
@@ -128,9 +128,9 @@
     </div>
     <ul class='item-lists'>
       <% @items.each do |item| %>
-      <%# 商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
+      
       <li class='list'>
-        <%= link_to item_path(item.id) do %>
+        <%= link_to "#" do %>
         <div class='item-img-content'>
           <%= image_tag item.image, class: "item-img" %>
 
@@ -148,7 +148,7 @@
             <%= item.name %>
           </h3>
           <div class='item-price'>
-            <span><%= item.price %>円<br><%= item.shipping_fee == 0 ? '送料込み' : '配送料別' %></span>
+            <span><%= item.price %>円<br><%= item.shipping_fee.name %></span>
             <div class='star-btn'>
               <%= image_tag "star.png", class:"star-icon" %>
               <span class='star-count'>0</span>
@@ -158,10 +158,7 @@
         <% end %>
       </li>
     <% end %>
-      <%# //商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
-
-      <%# 商品がない場合は以下のダミー商品が表示されるようにしましょう %>
-      <%# 商品がある場合は表示されないようにしましょう %>
+      
       <% if @items.empty? %>
       <li class='list'>
         <%= link_to '#' do %>
@@ -180,12 +177,9 @@
         </div>
         <% end %>
       </li>
-      <%# //商品がある場合は表示されないようにしましょう %>
-      <%# //商品がない場合は以下のダミー商品が表示されるようにしましょう %>
       <% end %>
     </ul>
   </div>
-  <%# /商品一覧 %>
 </div>
 <%= link_to(new_item_path, class: 'purchase-btn') do %>
   <span class='purchase-btn-text'>出品する</span>
