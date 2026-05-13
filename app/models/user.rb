@@ -11,9 +11,9 @@ class User < ApplicationRecord
   validates :first_name_kana, presence: true, format: { with: /\A[ァ-ヶー－]+\z/ }
   validates :birth_date, presence: true
   validates :password,
-          format: {
-            with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i,
-            message: 'must contain at least one number and one uppercase and lowercase character'
-          },
-          if: -> { password.present? }
+            format: {
+              with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i,
+              message: 'must contain at least one number and one uppercase and lowercase character'
+            },
+            if: -> { password.present? }
 end

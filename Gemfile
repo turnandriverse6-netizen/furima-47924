@@ -72,6 +72,7 @@ end
 
 group :development do
   gem 'rubocop', '1.71.2', require: false
+  gem 'rubocop-rails', '2.17.0', require: false
 end
 
 group :production do

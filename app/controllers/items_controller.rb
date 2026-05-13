@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
-   def index
+  def index
     @items = Item.with_attached_image.order(created_at: :desc)
   end
 
@@ -14,7 +14,7 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to root_path
     else
-      render :new, status: :unprocessable_entity 
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -22,9 +22,10 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
-   private
+  private
 
   def item_params
-    params.require(:item).permit(:name, :description, :price, :category_id, :condition_id, :shipping_fee_id, :shipping_day_id, :prefecture_id, :image).merge(user_id: current_user.id)
+    params.require(:item).permit(:name, :description, :price, :category_id, :condition_id, :shipping_fee_id, :shipping_day_id,
+                                 :prefecture_id, :image).merge(user_id: current_user.id)
   end
 end

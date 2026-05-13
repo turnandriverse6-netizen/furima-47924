@@ -283,6 +283,10 @@ GEM
     rubocop-ast (1.49.1)
       parser (>= 3.3.7.2)
       prism (~> 1.7)
+    rubocop-rails (2.17.0)
+      activesupport (>= 4.2.0)
+      rack (>= 1.1)
+      rubocop (>= 1.33.0, < 2.0)
     ruby-progressbar (1.13.0)
     ruby-vips (2.3.0)
       ffi (~> 1.12)
@@ -354,6 +358,7 @@ DEPENDENCIES
   rails (~> 7.1.0)
   rspec-rails (~> 4.0.0)
   rubocop (= 1.71.2)
+  rubocop-rails (= 2.17.0)
   selenium-webdriver
   sprockets-rails
   stimulus-rails
