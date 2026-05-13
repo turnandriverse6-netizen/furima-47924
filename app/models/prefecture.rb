@@ -23,7 +23,7 @@ class Prefecture < ActiveHash::Base
     { id: 21, name: '長野県' },
     { id: 22, name: '岐阜県' },
     { id: 23, name: '静岡県' },
-    { id: 24, name: '愛知県' },
+    { id: 24, name: '愛知県' }, 
     { id: 25, name: '三重県' },
     { id: 26, name: '滋賀県' },
     { id: 27, name: '京都府' },
@@ -44,7 +44,7 @@ class Prefecture < ActiveHash::Base
     { id: 42, name: '佐賀県' },
     { id: 43, name: '長崎県' },
     { id: 44, name: '熊本県' },
-    { id: 45, name: '大分県' },
+    { id: 45, name: '大分県' }, 
     { id: 46, name: '宮崎県' },
     { id: 47, name: '鹿児島県' },
     { id: 48, name: '沖縄県' }

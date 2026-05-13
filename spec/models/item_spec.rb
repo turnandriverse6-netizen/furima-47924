@@ -76,7 +76,7 @@ RSpec.describe Item, type: :model do
         @item.prefecture_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Prefecture must be other than 1')
-      end
+      end 
 
       it 'userが紐付いていないと登録できない' do
         @item.user = nil
@@ -98,3 +98,4 @@ RSpec.describe Item, type: :model do
     end
   end
 end
+
