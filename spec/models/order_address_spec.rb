@@ -1,5 +1,5 @@
 require 'rails_helper'
-
+load Rails.root.join('app/models/order_address.rb')
 RSpec.describe OrderAddress, type: :model do
   before do
     user = FactoryBot.create(:user)
