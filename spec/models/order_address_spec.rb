@@ -95,6 +95,18 @@ RSpec.describe OrderAddress, type: :model do
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include("Item can't be blank")
       end
+
+      it '電話番号が9桁以下では購入できない' do
+        @order_address.phone_number = '090123456'
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include('Phone number is invalid')
+      end
+
+      it '郵便番号は「3桁-4桁」の形式でないと購入できない' do
+        @order_address.postal_code = '1234-567'
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include('Postal code is invalid')
+      end
     end
   end
 end
