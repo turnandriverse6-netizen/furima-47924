@@ -16,5 +16,20 @@ function priceCalculator() {
   });
 }
 
+function disableSubmitButton() {
+  const form = document.getElementById("item-form");
+  const submitButton = document.getElementById("sell-submit-btn");
+
+  if (!form || !submitButton) return;
+
+  form.addEventListener("submit", () => {
+    submitButton.disabled = true;
+    submitButton.value = "出品中...";
+  });
+}
+
 window.addEventListener("turbo:load", priceCalculator);
 window.addEventListener("turbo:render", priceCalculator);
+
+window.addEventListener("turbo:load", disableSubmitButton);
+window.addEventListener("turbo:render", disableSubmitButton);
