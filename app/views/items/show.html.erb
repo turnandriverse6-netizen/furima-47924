@@ -76,6 +76,13 @@
     </div>
   </div>
   <%# /商品の概要 %>
+  <% if current_user != @item.user %>
+  <% if @item.user.followed_by?(current_user) %>
+      <%=link_to "フォロー解除する", user_relationships_path(@item.user),class: "btn", data: { turbo_method: :delete } %>
+    <% else %>
+      <%=link_to "フォローする", user_relationships_path(@item.user),class: "btn", data: { turbo_method: :post } %>
+    <% end %>
+  <% end %>
 
   <div class="comment-box">
     <form>
