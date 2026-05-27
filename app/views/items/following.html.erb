@@ -1,0 +1,36 @@
+<div class="following-item-contents">
+  <h2 class="following-item-title">フォロー中ユーザーの商品</h2>
+  <p class="following-item-subtitle">Following Items</p>
+
+  <% if @items.present? %>
+    <ul class="following-item-lists">
+      <% @items.each do |item| %>
+        <li class="list">
+          <%= link_to item_path(item) do %>
+            <div class="following-item-img-content">
+              <%= image_tag item.image, class: "following-item-img" %>
+            </div>
+
+            <div class="following-item-info">
+              <h3 class="following-item-name">
+                <%= item.name %>
+              </h3>
+
+              <div class="following-item-price">
+                <span><%= item.price %>円</span>
+              </div>
+
+              <div class="following-item-user">
+                出品者：<%= item.user.nickname %>
+              </div>
+            </div>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p class="no-following-items">
+      フォロー中ユーザーの商品はありません
+    </p>
+  <% end %>
+</div>

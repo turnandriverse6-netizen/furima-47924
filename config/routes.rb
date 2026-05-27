@@ -3,9 +3,13 @@ Rails.application.routes.draw do
   root to: "items#index"
 
   resources :items do
-    resources :orders, only: [:index, :create]
-  end
-  
+    collection do
+      get :following
+    end
+
+  resources :orders, only: [:index, :create]
+end
+
   resources :users do
     resource :relationships, only: [:create, :destroy]
   end

@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
-  before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy, :following]
+  before_action :set_item, only: [:show, :edit, :update, :destroy ]
   before_action :move_to_index, only: [:edit, :update, :destroy]
    def index
     @items = Item.with_attached_image.order(created_at: :desc)
@@ -38,6 +38,12 @@ class ItemsController < ApplicationController
     else
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def following
+    @items = Item.where(
+    user_id: current_user.followings.ids
+    ).order(created_at: :desc)
   end
 
    private
