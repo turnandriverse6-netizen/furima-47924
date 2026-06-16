@@ -26,4 +26,8 @@ extend ActiveHash::Associations::ActiveRecordExtensions
   validates :prefecture_id, presence: true, numericality: { other_than: 1 }
   validates :image, presence: true
   
+  def liked_by?(user)
+    likes.exists?(user_id: user.id)
+  end
+
 end
