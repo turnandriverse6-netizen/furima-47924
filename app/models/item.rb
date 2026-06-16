@@ -10,7 +10,7 @@ extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :shipping_fee
   belongs_to :shipping_day
   belongs_to :prefecture
-
+  has_many :likes, dependent: :destroy
   validates :name, presence: true
   validates :description, presence: true
   validates :price, presence: true, 
