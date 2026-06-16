@@ -11,7 +11,7 @@ class User < ApplicationRecord
 
          has_many :passive_relationships, class_name: "Relationship", foreign_key: :follower_id
          has_many :followers, through: :passive_relationships, source: :following
-
+         has_many :likes, dependent: :destroy
   validates :nickname, presence: true, length: { maximum: 20 }
   validates :last_name, presence: true, format: { with: /\A[ぁ-んァ-ン一-龥々ー]+\z/ }
   validates :first_name, presence: true, format: { with: /\A[ぁ-んァ-ン一-龥々ー]+\z/ }
