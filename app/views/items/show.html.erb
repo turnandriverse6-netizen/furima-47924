@@ -85,17 +85,15 @@
     <% end %>
   <% end %>
 
-<% if user_signed_in? %>
-  <% if @item.liked_by?(current_user) %>
-    <%= link_to "♥ いいね済み",
-      item_likes_path(@item),
-      data: { turbo_method: :delete } %>
+  <% if user_signed_in? && current_user != @item.user %>
+    <% if @item.liked_by?(current_user) %>
+      <%= link_to "♥ いいね済み #{@item.likes.count}", item_likes_path(@item), data: { turbo_method: :delete } %>
+    <% else %>
+      <%= link_to "♡ いいね #{@item.likes.count}", item_likes_path(@item), data: { turbo_method: :post } %>
+    <% end %>
   <% else %>
-    <%= link_to "♡ いいね",
-      item_likes_path(@item),
-      data: { turbo_method: :post } %>
+    ♥ <%= @item.likes.count %>
   <% end %>
-<% end %>
 
   <div class="comment-box">
     <form>
