@@ -3,7 +3,9 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy ]
   before_action :move_to_index, only: [:edit, :update, :destroy]
    def index
-    @items = Item.with_attached_image.order(created_at: :desc)
+    @items = Item.with_attached_image
+                 .includes(:likes)
+                 .order(created_at: :desc)
   end
 
   def new
